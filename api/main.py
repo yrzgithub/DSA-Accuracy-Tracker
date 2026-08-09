@@ -5,6 +5,11 @@ import os
 
 
 
+with open("credentials.json","w") as file:
+    file.write(os.environ.get("CREDS"))
+    file.close()
+
+
 app = Flask(__name__)
 sheet = gspread.service_account(filename='credentials.json').open("DSA Accuracy Tracker").sheet1
 
@@ -12,11 +17,11 @@ sheet = gspread.service_account(filename='credentials.json').open("DSA Accuracy 
 
 @app.route("/")
 def index():
-    #with open("questions.json") as file:
-    #    data = json.load(file)
-    #    file.close()
+    with open("questions.json") as file:
+        data = json.load(file)
+        file.close()
 
-    return render_template("index.html", rubric=os.environ.get("CREDS"))
+    return render_template("index.html", rubric=data)
 
 
 
