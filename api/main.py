@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request
 import gspread, json
 from datetime import datetime
+import os
 
 
 
@@ -11,11 +12,11 @@ sheet = gspread.service_account(filename='credentials.json').open("DSA Accuracy 
 
 @app.route("/")
 def index():
-    with open("questions.json") as file:
-        data = json.load(file)
-        file.close()
+    #with open("questions.json") as file:
+    #    data = json.load(file)
+    #    file.close()
 
-    return render_template("index.html", rubric=data)
+    return render_template("index.html", rubric=os.environ.get("CREDS"))
 
 
 
