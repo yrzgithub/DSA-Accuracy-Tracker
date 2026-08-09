@@ -1,1 +1,0 @@
-sheet = gspread.service_account(filename='credentials.json').list_spreadsheet_files()
