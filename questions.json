@@ -1,0 +1,102 @@
+{
+  "total_marks": 100,
+  "optimal_floor_percentage": 95,
+  "phases": [
+    {
+      "phase_name": "1. Deconstruction & Strategy",
+      "phase_marks": 20,
+      "questions": [
+        {
+          "id": 1,
+          "step": "Timer Started",
+          "marks": 4,
+          "description": "Timer running to build pacing."
+        },
+        {
+          "id": 2,
+          "step": "Zero Ambiguity Check",
+          "marks": 8,
+          "description": "Read constraints, data types, and input sizes until there are zero assumptions left in your head."
+        },
+        {
+          "id": 3,
+          "step": "Pattern & Puzzle Identification",
+          "marks": 8,
+          "description": "Explicitly recognized the core algorithmic pattern before touching the design."
+        }
+      ]
+    },
+    {
+      "phase_name": "2. Dry-Run & Simulation",
+      "phase_marks": 40,
+      "questions": [
+        {
+          "id": 4,
+          "step": "Initial Mental Dry-Run",
+          "marks": 8,
+          "description": "Stepped through the base example test case manually to understand the flow."
+        },
+        {
+          "id": 5,
+          "step": "Logic Built on Paper/Tablet",
+          "marks": 12,
+          "description": "Wrote out structural logic, state transitions, and pointer movements on paper before coding."
+        },
+        {
+          "id": 6,
+          "step": "Custom Example Dry-Run",
+          "marks": 12,
+          "description": "Invented your own non-trivial test case and manually traced it step-by-step through your planned paper logic."
+        },
+        {
+          "id": 7,
+          "step": "Edge Case Stress-Test",
+          "marks": 8,
+          "description": "Explicitly tested boundaries (empty inputs, single elements, negative numbers, duplicates, max constraints)"
+        }
+      ]
+    },
+    {
+      "phase_name": "3. Complexity & Implementation",
+      "phase_marks": 16,
+      "questions": [
+        {
+          "id": 8,
+          "step": "Time Complexity",
+          "marks": 8,
+          "description": "Mathematically derived and noted down the Time Complexity before submitting."
+        },
+        {
+          "id": 9,
+          "step": "Space Complexity",
+          "marks": 8,
+          "description": "Mathematically derived and noted down the Space Complexity before submitting."
+        }
+      ]
+    },
+    {
+      "phase_name": "4. Execution & Submission",
+      "phase_marks": 24,
+      "questions": [
+        {
+          "id": 10,
+          "step": "First-Attempt Compilation & Run",
+          "marks": 8,
+          "description": "All test cases passed on the very first run with zero syntax or pointer bugs."
+        },
+        {
+          "id": 11,
+          "step": "First-Attempt Submission",
+          "marks": 8,
+          "description": "Problem submitted successfully on the first try without guessing or trial-and-error patching."
+        },
+        {
+          "id": 12,
+          "step": "Gemini Code Review",
+          "marks": 8,
+          "description": "Code Quality Score by Gemini was more than 95%."
+        }
+      ]
+    }
+  ]
+}

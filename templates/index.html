@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Analysis</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='image.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=4.0">
+</head>
+<body>
+    <div id="details-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Enter Problem Details</h3>
+            <div class="form-group">
+                <label maxlength=100 for="input-prob-name">Problem Name</label>
+                <div class="input-with-action">
+                    <input type="text" id="input-prob-name" placeholder="e.g., Two Sum" required>
+                    <button onclick="navigator.clipboard.readText().then(t => document.getElementById('input-prob-name').value = t)" type="button" class="action-icon-btn" id="copy-name-btn" title="Paste name from clipboard">
+                        📋
+                    </button>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input-prob-url">Problem URL</label>
+                <div class="input-with-action">
+                    <input type="url" id="input-prob-url" placeholder="https://leetcode.com..." required>
+                    <button onclick="navigator.clipboard.readText().then(t => document.getElementById('input-prob-url').value = t)" type="button" class="action-icon-btn" id="copy-name-btn" title="Paste name from clipboard">
+                        📋
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input-prob-diff">Difficulty Level</label>
+                <select id="input-prob-diff">
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            </div>
+            <button type="button" class="modal-btn" id="submit-details-btn">Start Analysis</button>
+        </div>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- GTA Respect Celebration Overlay -->
+    <div id="gta-overlay" class="gta-overlay">
+        <div class="gta-container">
+            <h2 class="gta-mission">Mission Passed</h2>
+            <h1 class="gta-respect">RESPECT ++</h1>
+        </div>
+    </div>
+
+
+    <div class="full-layout">
+        <!-- Header with Inline Gauge -->
+        <header class="hero-section" id="hero-header">
+            <div class="title-group">
+                <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
+                    <a id="display-prob-url" class="header-prob-link" href="#" target="_blank" style="display: inline-block;">Problem</a>
+                    <span id="display-prob-difficulty" class="tag tag-easy">Easy</span>
+                </div>
+            </div>
+
+            <div class="target-status-wrapper"> 
+                <div class="status-badge" id="status-text">
+                    Target Unreached (<span id="target-threshold-display"></span>)
+                </div>
+            </div>
+
+
+            <div class="target-status-wrapper">
+                <p class="subtitle">
+                    Required Accuracy: <span id="required-accuracy-display">{{ rubric.optimal_floor_percentage }}%</span>
+                </p>
+            </div>
+
+            <!-- SVG Circular Meter -->
+            <div class="circular-progress-wrapper" id="progress-container">
+                <svg class="progress-ring" viewBox="0 0 200 200">
+                    <circle class="ring-bg-glow" cx="100" cy="100" r="100"></circle>
+                    <circle class="ring-bg" cx="100" cy="100" r="100"></circle>
+                    <circle class="ring-fill" id="ring-fill" cx="100" cy="100" r="100"></circle>
+                </svg>
+
+                <div class="ring-center-content">
+                    <span class="percentage-display" id="percentage-badge">0%</span>
+                    <span class="score-display" id="score-text">0 / {{ rubric.total_marks }} Accuracy</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 4-Column Layout: Separate column for each Phase -->
+        <main class="phases-grid">
+            {% for phase in rubric.phases %}
+            <div class="phase-card">
+                <div class="phase-header">
+                    <h3>{{ phase.phase_name }}</h3>
+                    <span class="phase-badge">{{ phase.phase_marks }}%</span>
+                </div>
+                <div class="checklist">
+                    {% for q in phase.questions %}
+                    <label class="checklist-item" for="q-{{ q.id }}">
+                        <input 
+                            type="checkbox" 
+                            id="q-{{ q.id }}" 
+                            class="rubric-checkbox" 
+                            data-marks="{{ q.marks }}"
+                        >
+                        <div class="item-content">
+                            <div class="item-title">
+                                <span>{{ q.step }}</span>
+                                <span class="marks-pill">+{{ q.marks }}</span>
+                            </div>
+                            <p class="item-desc">{{ q.description }}</p>
+                        </div>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </main>
+    </div>
+
+    <script>
+        window.TOTAL_MARKS = {{ rubric.total_marks }};
+        window.TARGET_FLOOR = {{ rubric.optimal_floor_percentage }};
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
