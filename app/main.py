@@ -1,17 +1,16 @@
 from flask import Flask, render_template,request
-import gspread, json
+import gspread, json, base64
 from datetime import datetime
 import os
+from dotenv import load_dotenv
 
 
 
-with open("credentials.json","w") as file:
-    file.write(os.environ.get("CREDS"))
-    file.close()
+load_dotenv()
 
 
 app = Flask(__name__)
-sheet = gspread.service_account(filename='credentials.json').open("DSA Accuracy Tracker").sheet1
+sheet = gspread.service_account_from_dict(info=json.loads(base64.b64decode(os.environ["CREDS"]))).open("DSA Accuracy Tracker").sheet1
 
 
 
@@ -47,8 +46,3 @@ def updateKeep():
     sheet.append_row(row)
 
     return {"status":200}
-
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
