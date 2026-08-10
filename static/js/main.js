@@ -16,15 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const audio = new Audio('https://www.myinstants.com/media/sounds/gta-san-andreas-gorevi-gecme-muzigi-respect-mp3indirdur.mp3');
 
-    let formPayload = { url: "", name: "", difficulty: "" };
+    let formPayload = { url: "", name: "", difficulty: "",checked : [], percent: 0 };
 
     function updatePayload(percent) {
-        formPayload = {
-            url: inputUrl.value.trim(),
-            name: inputname.value.trim(),
-            difficulty: inputDiff.value.toLowerCase().trim(),
-            percent: percent
-        };
+        formPayload.url = inputUrl.value.trim();
+        formPayload.name = inputname.value.trim();
+        formPayload.difficulty = inputDiff.value.toLowerCase().trim();
+        formPayload.percent = percent;
     }
 
     const totalMarks = 100;
@@ -59,19 +57,22 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.classList.add('hidden');
     });
 
-
     updateProgress()
 
     // Main recalculation logic
     function updateProgress() {
         let percentage = 0;
 
+        formPayload.checked = []
+
         checkboxes.forEach(checkbox => {
+           // console.log(checkbox.id);
             if (checkbox.checked) {
                 percentage += parseInt(checkbox.dataset.marks, 10);
+                updatePayload(percentage);
+                formPayload.checked.push(checkbox.id);
             }
         });
-
 
         const formattedPercentage = Math.round(percentage)
 

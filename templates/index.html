@@ -102,10 +102,10 @@
                 </div>
                 <div class="checklist">
                     {% for q in phase.questions %}
-                    <label class="checklist-item" for="q-{{ q.id }}">
+                    <label class="checklist-item" for="{{ q.id }}">
                         <input 
                             type="checkbox" 
-                            id="q-{{ q.id }}" 
+                            id="{{ q.id }}" 
                             class="rubric-checkbox" 
                             data-marks="{{ q.marks }}"
                         >
