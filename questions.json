@@ -32,7 +32,7 @@
       "questions": [
         {
           "id": 4,
-          "step": "Initial Mental Dry-Run",
+          "step": "Initial Dry-Run",
           "marks": 8,
           "description": "Stepped through the base example test case manually to understand the flow."
         },
@@ -80,9 +80,9 @@
       "questions": [
         {
           "id": 10,
-          "step": "First-Attempt Compilation & Run",
+          "step": "Compilation & Run (Max 3 Attempts)",
           "marks": 8,
-          "description": "All test cases passed on the very first run with zero syntax or pointer bugs."
+          "description": "All test cases passed within a maximum of 3 attempts, successfully resolving any initial syntax or edge-case bugs."
         },
         {
           "id": 11,
@@ -94,7 +94,7 @@
           "id": 12,
           "step": "Gemini Code Review",
           "marks": 8,
-          "description": "Code Quality Score by Gemini was more than 95%."
+          "description": "Code Quality Score by Gemini was more than 90%."
         }
       ]
     }
