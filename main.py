@@ -43,15 +43,16 @@ def updateKeep():
     difficulty = data["difficulty"]
     percent = data["percent"]
     checked = set(map(lambda e : int(e),data["checked"]))
+    inputTime = data["inputTime"]
 
     marks = [questions[id] if id in checked else 0 for id in range(1,13)]
 
-    if url=="" or name=="":
-        return {}
+    if url=="" or name=="" or inputTime=="":
+        return {"status":400}
     
     rows = sheet.get_all_values()
 
-    row = [datetime.now().strftime("%d %b %Y, %a"),name,url,difficulty,percent,*marks]
+    row = [datetime.now().strftime("%d %b %Y, %a"),name,url,difficulty,inputTime,percent,*marks]
 
     if row in rows:
         return {"status":400}

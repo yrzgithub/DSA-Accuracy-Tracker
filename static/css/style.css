@@ -487,10 +487,10 @@ html, body {
 .modal-content {
     background-color: #1e1e24; /* Dark mode themed background */
     color: #ffffff;
-    padding: 2.5rem;
+    padding: 2rem;
     border-radius: 12px;
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
 }
@@ -510,7 +510,7 @@ html, body {
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
@@ -552,7 +552,7 @@ html, body {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
 }
 
 .modal-btn:hover {

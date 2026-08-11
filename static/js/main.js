@@ -13,15 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const displayUrl = document.getElementById('display-prob-url');
     const inputDiff = document.getElementById('input-prob-diff');
     const displayDiff = document.getElementById('display-prob-difficulty');
+    const ipTime = document.getElementById("input-time");
 
     const audio = new Audio('https://www.myinstants.com/media/sounds/gta-san-andreas-gorevi-gecme-muzigi-respect-mp3indirdur.mp3');
 
-    let formPayload = { url: "", name: "", difficulty: "",checked : [], percent: 0 };
+    let formPayload = { url: "", name: "", difficulty: "",checked : [], percent: 0,inputTime:0 };
 
     function updatePayload(percent) {
-        formPayload.url = inputUrl.value.trim();
-        formPayload.name = inputname.value.trim();
-        formPayload.difficulty = inputDiff.value.toLowerCase().trim();
         formPayload.percent = percent;
     }
 
@@ -38,6 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const urlValue = inputUrl.value.trim();
         const nameValue = inputname.value.trim();
         const diffValue = inputDiff.value.toLowerCase().trim(); // 'easy', 'medium', or 'hard'
+
+        formPayload.url = inputUrl.value.trim();
+        formPayload.name = inputname.value.trim();
+        formPayload.difficulty = inputDiff.value.toLowerCase().trim();
+        formPayload.inputTime = ipTime.value;
 
         // Update link text and href
         displayUrl.href = urlValue;
