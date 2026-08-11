@@ -15,7 +15,7 @@
                 <label maxlength=100 for="input-prob-name">Problem Name</label>
                 <div class="input-with-action">
                     <input type="text" id="input-prob-name" placeholder="e.g., Two Sum" required>
-                    <button onclick="navigator.clipboard.readText().then(t => document.getElementById('input-prob-name').value = t)" type="button" class="action-icon-btn" id="copy-name-btn" title="Paste name from clipboard">
+                    <button onclick="navigator.clipboard.readText().then(t => document.getElementById('input-prob-name').value = t.split('/')[4].toLowerCase().split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))" type="button" class="action-icon-btn" id="copy-name-btn" title="Paste name from clipboard">
                         📋
                     </button>
 
