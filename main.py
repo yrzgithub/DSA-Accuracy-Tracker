@@ -52,7 +52,7 @@ def updateKeep():
     
     rows = sheet.get_all_values()
 
-    row = [datetime.now().strftime("%d %b %Y, %a"),name,url,difficulty,inputTime,percent,*marks]
+    row = [datetime.now().strftime("%d %b %Y, %a"),name,url,difficulty,inputTime,percent,"",*marks]
 
     if row in rows:
         return {"status":400}
