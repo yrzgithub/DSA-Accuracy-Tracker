@@ -13,11 +13,12 @@ load_dotenv()
 
 CREDS = json.loads(base64.b64decode(os.environ["CREDS"]))
 DOCUMENT_ID = os.environ["DOCUMENT_ID"]
+SOURCE_DOC_ID = os.environ["SOURCE_DOC_ID"]
 
 
 sheet = gspread.service_account_from_dict(info=CREDS).open("DSA Accuracy Tracker").sheet1
 docs = build('docs', 'v1', credentials=service_account.Credentials.from_service_account_info(info=CREDS)).documents()
-source_doc = build('docs', 'v1', credentials=service_account.Credentials.from_service_account_info(info=CREDS)).documents().get(documentId="1A0ENjqNC0toTbp6gP_iB7uvgbODWd7xt1HYr4Her9KE").execute()
+source_doc = build('docs', 'v1', credentials=service_account.Credentials.from_service_account_info(info=CREDS)).documents().get(documentId=SOURCE_DOC_ID).execute()
 
 body_content = source_doc.get('body', {}).get('content', [])
 
