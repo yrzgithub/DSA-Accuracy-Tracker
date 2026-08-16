@@ -160,7 +160,7 @@ def updateKeep():
     requests.append({
             'insertText': {
                 'location': {'index': 1},
-                'text': name
+                'text': name + "\n"
             }
         })
 
